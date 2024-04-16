@@ -7,10 +7,9 @@ const msal = require("@azure/msal-node");
 
 const msalConfig = {
   auth: {
-    clientId: clientID,
-    authority:
-      "https://login.microsoftonline.com/87c50b58-2ef2-423d-a4db-1fa7c84efcfa",
-    clientSecret: Secret,
+    clientId: process.env.CLIENT_ID, // Moet overeenkomen met Application (client) ID in Azure AD
+    authority: `https://login.microsoftonline.com/${process.env.TENANT_ID}`, // Moet je specifieke Tenant ID zijn
+    clientSecret: process.env.CLIENT_SECRET, // Moet een geldig client geheim zijn
   },
 };
 

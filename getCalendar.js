@@ -11,13 +11,11 @@ if (!process.env.OBJECT_ID) {
   throw new Error("OBJECT_ID is niet gedefinieerd in .env bestand");
 }
 
-const Id = process.env.OBJECT_ID;
-
 const { getAuthenticatedClient } = require("./graphClient");
 
 async function getCalendar(msalClient, userId) {
   const client = getAuthenticatedClient(msalClient, userId);
-  const events = await client.api(`/users/${Id}/calendar/events`).get();
+  const events = await client.api(`/users/${userId}/calendar/events`).get(); // Gebruik de doorgegeven userId
   return events.value;
 }
 
